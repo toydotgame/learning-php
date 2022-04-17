@@ -46,8 +46,7 @@
         } if(intval($id) == 0) { // If the value of the ID is 0, exit.
             die("<h3>No user ID entered.<h3>");
         }
-        // TODO: Parse output from HTML form to lowercase "true" or "false" response for SQL.
-        $cool = "false"; //$_POST["cool"];
+        $cool = $_POST["cool"]; // Yes, it just works. (Thanks トッド・ハーワード!!!)
 
         // SQL command inserts values in to the columns name, surname, id, and cool:
         $sql = "INSERT INTO $tablename (name, surname, id, cool) VALUES (\"$name\", \"$surname\", \"$id\", \"$cool\")";
@@ -69,12 +68,19 @@
 
         if($exit == 0) {
             echo "<h3>Data entered successfully.</h3>";
-            echo "<hr><table>
+            echo "<hr><div align=\"center\"><table>
                       <tr><td><b>Name:</b></td><td style=\"text-align:left\">$name $surname</td></tr>
                       <tr><td><b>Student Number:</b></td><td style=\"text-align:left\">$id</td></tr>
                       <tr><td><b><i>Cool?:</i></b></td><td style=\"text-align:left\">$cool</td></tr>
-                  </table><hr>";
+                  </table></div><hr>";
         }
+
+        /* For admins: Use a local MySQL/MariaDB client and browse the DB from the commandline:
+         * `mysql -u apache -p learning` (The password is "1337")
+         * `SHOW TABLES;`
+         * `SELECT * FROM student_details;`
+         * What fun!
+         */
 
         // Close the connection like the good boy that you are:
         $conn -> close();
