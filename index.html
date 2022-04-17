@@ -27,16 +27,25 @@
 		<hr>
 		<div align="center">
 			<table>
-				<tr><td>First Name:</td><td rowspan="3">
+			<tr>
+				<td>
+					First Name:<br><br>
+					Last Name:<br><br>
+					Student Number:<br><br>
+					<i>Are you cool?:</i>
+				</td>
+				<td style="text-align:left">
 					<form id="form" action="submit.php" method="post">
-						<input type="text" name="name" /><br>
-						<input type="text" name="surname" /><br>
-						<input type="text" onkeypress="return isNumberKey(event)" name="id" /><br>
-					</form>						
-				</td></tr>
-				<tr><td>Last Name:</td></tr>
-				<tr><td>Student Number:</td></tr>
+						<input type="text" name="name" /><br><br>
+						<input type="text" name="surname" /><br><br>
+						<input type="text" onkeypress="return isNumberKey(event)" name="id" /><br><br>
+						<input type="radio" name="cool" id="true" value="true" /><label for="true">Yes</label>
+						<input type="radio" name="cool" id="false" value="false" /><label for="false">No</label>
+					</form>			
+				</td>
+			</tr>
 			</table>
+			<br>
 			<input form="form" type="submit" value="Submit" />
 		</div>
 	</body>
