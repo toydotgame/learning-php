@@ -4,11 +4,26 @@
 		<title>HTML/PHP MySQL Form</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<script type="text/javascript">
+			function isNumberKey(evt){
+				var charCode = (evt.which) ? evt.which : evt.keyCode
+				if (charCode > 31 && (charCode < 48 || charCode > 57))
+					return false;
+				return true;
+			}
+		</script>
 	</head>
 	<body>
 		<h1>HTML Form Demo</h1>
 		<h3>Demonstrating hooks with an Apache HTTP server interacting with MySQL.</h3>
 		<br>
-		<p>Hello, world!</p>
+		<div align="center">
+			<table>
+				<tr><td><label for="name">First Name: </label></td><td><input type="text" id="name" name="name" /></td></tr>
+				<tr><td><label for="id">Last Name: </label></td><td><input type="text" id="surname" name="surname" /></td></tr>
+				<tr><td><label for="surname">Student Number: </label></td><td><input type="text" onkeypress="return isNumberKey(event)" id="id" name="id" /></td></tr>
+				<tr><td /><td><input type="submit" value="Submit" /></td></tr>
+			</table>
+		</div>
 	</body>
 </html>

@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+
 html {
 	background-color: #1c1c1c;
 	color: #fff;
-	font-family: "DejaVu Sans Mono", serif;
-		src: url("/DejaVuSansMono.ttf") format("truetype"), url("/DejaVuSansMono.woff") format("woff");
+	font-family: "Fira Mono", serif;
 }
 
+td {
+	text-align: right;
+}
