@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<!--
+	CREATED: 2022-04-17
+	AUTHOR: toydotgame
+	index.html file for a MySQL demo using XAMPP.
+-->
+
 <html>
 	<head>
 		<title>HTML/PHP MySQL Form</title>
@@ -19,11 +26,17 @@
 		<br>
 		<div align="center">
 			<table>
-				<tr><td><label for="name">First Name: </label></td><td><input type="text" id="name" name="name" /></td></tr>
-				<tr><td><label for="id">Last Name: </label></td><td><input type="text" id="surname" name="surname" /></td></tr>
-				<tr><td><label for="surname">Student Number: </label></td><td><input type="text" onkeypress="return isNumberKey(event)" id="id" name="id" /></td></tr>
-				<tr><td /><td><input type="submit" value="Submit" /></td></tr>
+				<tr><td>First Name:</td><td rowspan="3">
+					<form id="form" action="submit.php" method="post">
+						<input type="text" name="name" /><br>
+						<input type="text" name="surname" /><br>
+						<input type="text" onkeypress="return isNumberKey(event)" name="id" /><br>
+					</form>						
+				</td></tr>
+				<tr><td>Last Name:</td></tr>
+				<tr><td>Student Number:</td></tr>
 			</table>
+			<input form="form" type="submit" value="Submit" />
 		</div>
 	</body>
 </html>
