@@ -29,6 +29,9 @@ if ($conn -> connect_error) {
 $name = $_POST["name"]; // "name" here comes from `id="name"` in index.html.
 $surname = $_POST["surname"];
 $id = $_POST["id"];
+if(strlen($id) > 6) { // Truncate $id to always be ≤ 6 digits.
+    $id = substr($id, 0, 6);
+}
 // TODO: Parse output from HTML form to lowercase "true" or "false" response for SQL.
 //$cool = $_POST["cool"];
 
