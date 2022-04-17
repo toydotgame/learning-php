@@ -8,7 +8,8 @@
 
 /*
  * LOGIN: apache, 1337
- * PERMISSIONS: INSERT
+ * PERMISSIONS: INSERT, SELECT, UPDATE
+ *     I know the SELECT permission is bad because an 3P1C_H4X0R could get the plaintext password from below and run `SELECT * FROM student_details;`, but OPSEC isn't exactly my 1st coding priority at 12 AM.
  * DB: learning, TABLE: student_details
  */
 $servername = "localhost";
@@ -36,33 +37,22 @@ $sql = "INSERT INTO $tablename (name, surname, id, cool) VALUES (\"$name\", \"$s
 
 $exit = 0; // Pseudo-exit-code thing to compensate for PHP's awful syntax.
 try {
-    $conn -> query($sql);
+    $conn -> query($sql); // This essentially runs the command stored in $sql through the connection $conn.
 } catch(Exception $e) {
     if(str_contains($e, "mysqli_sql_exception: Duplicate entry")) {
-        echo "Duplicate ID detected. Updating old entry.";
+        echo "Duplicate ID detected. Updating old entry.<br>";
 
-        $sql = "UPDATE $tablename SET name=\"$name\", surname=\"$surname\", cool=\"false\" WHERE id=\"$id\"";
+        $sql = "UPDATE $tablename SET name=\"$name\", surname=\"$surname\", cool=\"false\" WHERE id=\"$id\""; // Basically update the exising DB entry with $id to the new $name, $surname, and $cool values.
         $conn -> query($sql); // If this errors, it's _your_ problem. I give up.
     } else {
         echo "Error: " . $e;
+        $exit = 1;
     }
-    $exit = 1;
 }
 
 if($exit == 0) {
-    echo "no error :3";
+    echo "Data entered successfully.";
 }
-
-/*if ($conn -> query($sql) === TRUE) {
-    echo "Data submitted successfully.";
-} else if(mysqli_errno() == 1062) {
-    
-    echo "Duplicate ID detected. Updating:<br>";
-    //$sql = "UPDATE $tablename SET (name, surname, cool) VALUES (\"$name\", \"$surname\", \"false\") WHERE id=\"$id\"";
-    //echo "Error: " . $sql . "<br>" . $conn -> error;
-} else {
-    echo "Error: " . $err . "<br>" . $conn -> error; // No clue what $sql would be here. This is just a copy-paste from W3S.
-}*/
 
 // Close the connection like the good boy that you are:
 $conn -> close();
