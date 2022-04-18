@@ -21,7 +21,7 @@ You'll need the packages for MySQL (most common client is MariaDB) and Apache (k
 sudo apt install mysql-client apache2
 
 # Arch and most other distros: (Substitue in your package manager instead)
-sudo pacman -S mariadb httpd
+sudo pacman -S mariadb apache
 ```
 Start both servers:
 ```sh
@@ -49,7 +49,7 @@ GRANT SELECT, INSERT, UPDATE ON *.* to apache;
 EXIT;
 ```
 #### Windows:
-Navigate to `localhost:81/phpmyadmin` (port varies depending on XAMPP, see the Control Panel to find the Apache port).
+Navigate to `localhost:80/phpmyadmin`.
 ##### Create a new database:
 * _Databases_ → _Database name_ → "learning" → _Create_
 * _Create table_ → _Name:_ → "student\_details" → _Number of columns:_ → 4
@@ -61,6 +61,7 @@ CREATE TABLE student_details (id text, PRIMARY KEY (id(6)), name text, surname t
 ##### Create a new user:
 * Go to phpMyAdmin homepage
 * _User accounts_ → _New_ → _Add user account_:
+
 Field | Value
 ----- | -----
 User name: | apache
@@ -89,7 +90,7 @@ In XAMPP's Control Panel, go to the _Apache_ Module → _Actions_ → _Config_ �
 ```
 DocumentRoot "C:/Users/User/Documents/learning-php"
 ```
-Then, navigate to `localhost:81` (or whatever port Apache is running on) in your browser to see the form page.
+Then, navigate to `localhost:80` in your browser to see the form page.
 ### Database Administration
 #### Linux:
 Login to MySQL: (password is "1337")
@@ -102,4 +103,4 @@ SELECT * FROM student_details;
 SELECT * FROM student_details WHERE id LIKE "<student number>";
 ```
 #### Windows:
-Navigate to `localhost:81/phpmyadmin` and find _student\_details_ on the left column. Click on that and view entries in the right.
+Navigate to `localhost:80/phpmyadmin` and find the _student\_details_ table (under the _learning_ database) in the left column. Click on that and view database entries on the right.
