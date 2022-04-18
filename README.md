@@ -45,7 +45,7 @@ sudo systemctl start mariadb
 ```
 Set up MySQL:
 ```sh
-mysql -u root # root privileges are needed to create a new database and users.
+sudo mysql -u root # root privileges are needed to create a new database and users.
 ```
 ```sql
 CREATE DATABASE learning;
