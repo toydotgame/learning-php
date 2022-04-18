@@ -13,13 +13,12 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
+        <h1>Response Page</h1>
+        <hr>
         <?php
-        echo "<h1>Response Page</h1><hr>";
-
         /*
         * LOGIN: apache, 1337
         * PERMISSIONS: INSERT, SELECT, UPDATE
-        *     The SELECT permission is bad because an 3P1C_H4X0R could get the plaintext password from below and login with it and run `SELECT * FROM student_details;` and have essentially leaked all the stored information.
         * DB: learning, TABLE: student_details
         */
         $servername = "localhost";
@@ -35,8 +34,8 @@
             die("<h3>Connection failed: " . $conn -> connect_error . "</h3>");
         }
 
-        // Now that the connection is working, define the variables that we will insert:
-        $name = $_POST["name"]; // The POST values here are named based off of the `<input>` `name` attributes in index.html.
+        // Define some variables based on the `name` attributes in index.html:
+        $name = $_POST["name"];
         $surname = $_POST["surname"];
         $id = $_POST["id"];
         if(strlen($id) < 6) { // Add leading zeroes so that strlen($id) == 6.
@@ -51,7 +50,7 @@
             die("<h3>You need to choose an option on if you are cool or not!</h3>");
         }
 
-        // SQL command inserts values in to the columns name, surname, id, and cool:
+        // SQL command inserts values in to their respective columns:
         $sql = "INSERT INTO $tablename (name, surname, id, cool) VALUES (\"$name\", \"$surname\", \"$id\", \"$cool\")";
 
         /*
@@ -89,14 +88,6 @@
                   </table></div><hr>";
         }
 
-        /* For admins: Use a local MySQL/MariaDB client and browse the DB from the commandline:
-         * `mysql -u apache -p learning` (The password is "1337")
-         * `SHOW TABLES;`
-         * `SELECT * FROM student_details;`
-         * `SELECT * FROM student_details WHERE id LIKE "<student number>";`
-         */
-
-        // Close the connection once we're done:
         $conn -> close();
         ?>
     </body>
