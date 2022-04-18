@@ -1,6 +1,16 @@
 # XAMPP MySQL Form
 A demonstration of a HTML form that submits data to a MySQL database running on XAMPP.
 
+### Contents:
+* [Requirements](#requirements)
+* [Setup & Use](#setup--use)
+	* [Prerequisites](#prerequisites)
+	* [Download](#download)
+	* [Install](#install)
+	* [Database Administration](#database-administration)
+
+***
+
 ## Requirements
 ### Linux:
 * Apache
