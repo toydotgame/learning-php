@@ -46,7 +46,10 @@
         } if(intval($id) == 0) { // If the value of the ID is 0, exit.
             die("<h3>No user ID entered.<h3>");
         }
-        $cool = $_POST["cool"]; // `"cool"` is a radio button group and it seems to just plainly return `"true"` or `"false"`.
+        @$cool = $_POST["cool"]; // `@` suppresses errors and warnings.
+        if($cool == "") { // Catches if $cool was not set.
+            die("<h3>You need to choose an option on if you are cool or not!</h3>");
+        }
 
         // SQL command inserts values in to the columns name, surname, id, and cool:
         $sql = "INSERT INTO $tablename (name, surname, id, cool) VALUES (\"$name\", \"$surname\", \"$id\", \"$cool\")";

@@ -50,7 +50,7 @@ mysql -u root # root privileges are needed to create a new database and users.
 ```sql
 CREATE DATABASE learning;
 USE learning;
-CREATE TABLE student_details (id text, PRIMARY KEY (id(6)), name text, surname text, cool text NOT NULL);
+CREATE TABLE student_details (id text, PRIMARY KEY (id(6)), name text, surname text, cool text);
 
 -- Password is "1337":
 CREATE USER apache IDENTIFIED BY PASSWORD "*C6F8F27F2F530B7B270D641A3604424B9B404D43";
@@ -65,7 +65,7 @@ Navigate to `localhost:80/phpmyadmin`.
 * _Create table_ → _Name:_ → "student\_details" → _Number of columns:_ → 4
 * Insert the following in to the console at the bottom:
 ```sql
-CREATE TABLE student_details (id text, PRIMARY KEY (id(6)), name text, surname text, cool text NOT NULL);
+CREATE TABLE student_details (id text, PRIMARY KEY (id(6)), name text, surname text, cool text);
 ```
 * Ctrl+Enter
 ##### Create a new user:
