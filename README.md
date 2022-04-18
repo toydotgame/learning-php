@@ -3,13 +3,13 @@ A demonstration of a HTML form that submits data to a MySQL database running on 
 
 ## Requirements
 ### Linux:
-* Apache (running)
-* MySQL Server (running)
+* Apache
+* MySQL Server
 * HTML5-compatible browser
 ### Windows:
-* XAMPP
-	* Apache (running)
-	* MySQL Server (running)
+* XAMPP, running:
+	* Apache
+	* MySQL Server
 * HTML5-compatible browser
 
 ## Setup & Use
@@ -71,10 +71,16 @@ Authentication plugin: | Native MySQL Authentication
 * _Global priveleges_ → _Data_ → enable _SELECT_, _INSERT_, and _UPDATE_
 * _SSL_ → _REQUIRE NONE_
 * _Go_
+
+***
+
 ### Download
 ```sh
 git clone https://github.com/toydotgame/learning-php.git; cd learning-php/
 ```
+
+***
+
 ### Install
 #### Linux:
 ```sh
@@ -91,6 +97,9 @@ In XAMPP's Control Panel, go to the _Apache_ Module → _Actions_ → _Config_ �
 DocumentRoot "C:/Users/User/Documents/learning-php"
 ```
 Then, navigate to `localhost:80` in your browser to see the form page.
+
+***
+
 ### Database Administration
 #### Linux:
 Login to MySQL: (password is "1337")
