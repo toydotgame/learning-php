@@ -55,16 +55,12 @@
 
         /*
          * PHP's pretty awful so I'll explain what's going on here.
-         * - $exit is an exit code. (0 is OK, ≠ 0 is an error) It is set to 1 if the `catch()` is ever run.
          * - `try` tries to run the command stored in $sql through connection $conn.
          * - If there's an error, the exception is caught:
          *     - If the exception output contains "Duplicate entry," seperate code is run:
-         *         - The command in $sql is updated to an UPDATE command, which updates $name, $surname, and $cool in the database to their new values [sent with the HTTP request], based on the fact that $id is the same.
-         *         - The UPDATE command is run.
-         *     - If the exception _does not contain_ "Duplicate entry," a generic error stack trace is given.
-         *         - TODO: If there's still an error, just `die()`, instead of using a whole exit code thing. The data response `echo` won't run anyway if the code has exited.
+         *         - An UPDATE command is run, which updates $name, $surname, and $cool in the database to their new values [sent with the HTTP request], based on the fact that $id is the same.
+         *     - If the exception _does not contain_ "Duplicate entry," a generic error stack trace is given and the program exits.
          */
-        $exit = 0;
         try {
             $conn -> query($sql);
         } catch(Exception $e) {
@@ -74,19 +70,16 @@
                 $sql = "UPDATE $tablename SET name=\"$name\", surname=\"$surname\", cool=\"$cool\" WHERE id=\"$id\""; // Basically update the exising DB entry with $id to the new $name, $surname, and $cool values.
                 $conn -> query($sql);
             } else {
-                echo "Error: " . $e;
-                $exit = 1;
+                die("Error: " . $e);
             }
         }
 
-        if($exit == 0) {
-            echo "<h3>Data entered successfully.</h3>";
-            echo "<hr><div align=\"center\"><table>
-                      <tr><td><b>Name:</b></td><td style=\"text-align:left\">$name $surname</td></tr>
-                      <tr><td><b>Student Number:</b></td><td style=\"text-align:left\">$id</td></tr>
-                      <tr><td><b><i>Cool?:</i></b></td><td style=\"text-align:left\">$cool</td></tr>
-                  </table></div><hr>";
-        }
+        echo "<h3>Data entered successfully.</h3>";
+        echo "<hr><div align=\"center\"><table>
+                  <tr><td><b>Name:</b></td><td style=\"text-align:left\">$name $surname</td></tr>
+                  <tr><td><b>Student Number:</b></td><td style=\"text-align:left\">$id</td></tr>
+                  <tr><td><b><i>Cool?:</i></b></td><td style=\"text-align:left\">$cool</td></tr>
+              </table></div><hr>";
 
         $conn -> close();
         ?>
