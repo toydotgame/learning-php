@@ -38,19 +38,19 @@
         $name = $_POST["name"];
         $surname = $_POST["surname"];
         $id = $_POST["id"];
-        
+
         if(strlen($id) < 6) { // Add leading zeroes so that strlen($id) == 6.
             $id = str_pad($id, 6, "0", STR_PAD_LEFT);
         } else if(strlen($id) > 6) { // Truncate $id if strlen($id) > 6.
             $id = substr($id, 0, 6);
         }
 
-        } if(intval($id) == 0) { // Exit if $id is not set.
+        if(intval($id) == 0) { // Exit if $id is not set.
             die("<h3>No user ID entered.<h3>");
         }
         @$cool = $_POST["cool"]; // `@` suppresses errors and warnings.
-        if(is_null($cool)) { // Exit if $cool is not set.
-            die("<h3>You need to choose an option on if you are cool or not!</h3>");
+        if($name == "" || $surname == "" || is_null($cool)) {
+            die("<h3>You need to enter data into all fields!</h3>");
         }
 
         // SQL command inserts values in to their respective columns:
