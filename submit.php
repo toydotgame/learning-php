@@ -86,6 +86,6 @@
 
         $conn -> close();
         ?>
-        <small>If you think there's not enough CSS or whatever, just go look at <a href="https://iccmc.serveminecraft.net/">what I've already done</a>. (<a href="https://toydotgame.github.io/>Or something else?</a>)</small>
+        <small>If you think there's not enough CSS or whatever, just go look at <a href="https://iccmc.serveminecraft.net/">what I've already done</a>. (<a href="https://toydotgame.github.io/">Or something else?</a>)</small>
     </body>
 </html>
